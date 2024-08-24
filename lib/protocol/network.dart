@@ -2695,7 +2695,7 @@ class ResponseData {
   final String mimeType;
 
   /// Resource charset as determined by the browser (if applicable).
-  final String charset;
+  final String? charset;
 
   /// Refined HTTP request headers that were actually transmitted over the network.
   final Headers? requestHeaders;
@@ -2763,7 +2763,7 @@ class ResponseData {
       required this.statusText,
       required this.headers,
       required this.mimeType,
-      required this.charset,
+      this.charset,
       this.requestHeaders,
       required this.connectionReused,
       required this.connectionId,
@@ -2791,7 +2791,7 @@ class ResponseData {
       statusText: json['statusText'] as String,
       headers: Headers.fromJson(json['headers'] as Map<String, dynamic>),
       mimeType: json['mimeType'] as String,
-      charset: json['charset'] as String,
+      charset: json['charset'] as String?,
       requestHeaders: json.containsKey('requestHeaders')
           ? Headers.fromJson(json['requestHeaders'] as Map<String, dynamic>)
           : null,
